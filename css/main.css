@@ -48,3 +48,8 @@ body {
 html {
     background: #e8e8e8 url('../images/vertical-waves.png') repeat;
 }
+
+.right{
+  text-align: right;
+  font-size: .75rem;
+}
