@@ -3,33 +3,23 @@ let playerName = "";
 let choiceList = [];
 let currentPage = null;
 
-///////////////////////////////////////////////////
-//////// TODOs ///////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-// Fill in the blanks below to complete each TODO task.                       //
-////////////////////////////////////////////////////////////////////////////////
-
-// TODO: Prompt the user for their name. Store the name in the variable `playerName`.
-
 playerName = prompt('Please enter a name for your character.');
 
-
-function getCurrentPage(slug){
-  currentPage = storyData[slug];
+function getCurrentPage(slug){ // set currentPage by storyData slug and return currentPage
+  currentPage = storyData[slug]; 
   return currentPage;
 }
 
-function recordChoice(slug){
-  choiceList.push(slug);
+function recordChoice(slug){ // push slug of choice to choiceList array
+  choiceList.push(slug); 
 }
 
-function undoChoice(){
+function undoChoice(){ // remove last slug from choiceList array and return new last (previously second-to-last) slug
   choiceList.pop();
   return choiceList[choiceList.length - 1];
 }
 
-
-function changePage(slug){
+function changePage(slug){ // call functions using choice's slug
   recordChoice(slug);
   currentPage = getCurrentPage(slug);
   updatePage(currentPage);
@@ -38,18 +28,7 @@ function changePage(slug){
 
 ///////////////////////////////////////////////////
 //////// Story Data //////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-// Only edit this data to change/enhance the story. Be sure to watch for how  //
-// changes to the story data might affect the mechanisms that output the      //
-// story.                                                                     //
-////////////////////////////////////////////////////////////////////////////////
-// NOTE: The data below is organized as a JS Object. The content for each     //
-// page is stored using a "slug" -- a short alphanumeric identifier (for      //
-// example, "p1", "p2", "homeEnd", etc.). Each page contains a `text`         //
-// property and a `choices` property. The `choices` property is an Array that //
-// contains all of the choices, including the slug that each choice should    //
-// link to.                                                                   //
-////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////
 
 var storyData = {
     title: "The Crow and the Fox",
@@ -210,11 +189,8 @@ var storyData = {
 
 ///////////////////////////////////////////////////
 //////// Main Script /////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-// This script runs the game. You should only edit it if you are attempting a //
-// stretch goal. Otherwise, this script calls the functions that you have     //
-// created above.                                                             //
-////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////
+
 
 let title = document.querySelector('#story-title');
 title.innerHTML = storyData.title;
@@ -234,10 +210,10 @@ function updatePage(page) {
         choicesUL.appendChild(newLI);
     }
     addEventListeners();
-    let currentTime = new Date();
-    let elapsedTime = Math.floor(currentTime - startTime) / 1000;
+    let currentTime = new Date(); // time upon running updatePage function
+    let elapsedTime = Math.floor(currentTime - startTime) / 1000; // calculate seconds elapsed between currentTime and startTime
     timePlayed = document.querySelector('#time-played');
-    timePlayed.innerHTML = 'Total Time Played: ' + elapsedTime + ' seconds';
+    timePlayed.innerHTML = 'Total Time Played: ' + elapsedTime + ' seconds'; // print elapsed time
 }
 
 function addEventListeners(){
