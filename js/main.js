@@ -222,6 +222,8 @@ title.innerHTML = storyData.title;
 let pageContent = document.querySelector('#story-text');
 let choicesUL = document.querySelector('#choices');
 
+let startTime = new Date();
+
 function updatePage(page) {
     pageContent.innerHTML = page.text;
     choicesUL.innerHTML = '';
@@ -232,6 +234,10 @@ function updatePage(page) {
         choicesUL.appendChild(newLI);
     }
     addEventListeners();
+    let currentTime = new Date();
+    let elapsedTime = Math.floor(currentTime - startTime) / 1000;
+    timePlayed = document.querySelector('#time-played');
+    timePlayed.innerHTML = 'Total Time Played: ' + elapsedTime + ' seconds';
 }
 
 function addEventListeners(){
